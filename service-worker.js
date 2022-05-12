@@ -3,17 +3,15 @@
 //installera
 self.addEventListener('install', (event) => {
 //vi vill skapa upp en cache och lägga till alla filer vi vill ha dit innan vi går vidare till activate
-event.waitUntil(
-  //öppna upp en cache som vi ger namnet v1
-  caches.open('v1')
-  //tillbaka får vi en cache
-  .then((cache) => {
-    //vi returnerar att vi vill lägga till en array med lite filer
-    return cache.addAll(['index.html', 'js/index.js', 'offline.html', 'css/style-offline.css']);
-  })
-);
-
-
+  event.waitUntil(
+    //öppna upp en cache som vi ger namnet v1
+    caches.open('v1')
+    //tillbaka får vi en cache
+    .then((cache) => {
+      //vi returnerar att vi vill lägga till en array med lite filer
+      return cache.addAll(['index.html', 'js/index.js', 'offline.html', 'css/style-offline.css']);
+    })
+  );
   //gör att webbläsaren själv uppdaterar SW vid ändringar så man slipper göra det manuellt
   self.skipWaiting();
   //triggas när den installerats
